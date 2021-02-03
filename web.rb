@@ -120,7 +120,12 @@ post '/create_payment_intent' do
         :capture_method => 'manual',
         :amount => params[:amount],
         :currency => params[:currency],
-        :description => params[:description] || 'Example CAD PaymentIntent',
+        :description => params[:description] || 'Example CAD PaymentIntent-Connect',
+        :on_behalf_of => 'acct_1F7QVgInRaMT2ftY',
+        :transfer_data {
+          destination: 'acct_1F7QVgInRaMT2ftY',
+        },
+        :application_fee_amount: 10,
       )
      else
        payment_intent = Stripe::PaymentIntent.create(
